@@ -1,16 +1,16 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const express = require('express');
-const cors = require('cors');
-const connectDB = require('./config/db');
-const contactRoutes = require('./routes/contactRoutes');
-const updateRoutes = require('./routes/updateRoutes');
-const uploadRoutes = require('./routes/uploadRoutes');
-const projectRoutes = require('./routes/projectRoutes');
-const programRoutes = require('./routes/programRoutes');
-const impactRoutes = require('./routes/impactRoutes');
-const zohoCampaignsRoutes = require('./routes/zohoCampaignsRoutes');
+import express from 'express';
+import cors from 'cors';
+import connectDB from './config/db.js';
+import contactRoutes from './routes/contactRoutes.js';
+import updateRoutes from './routes/updateRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
+import projectRoutes from './routes/projectRoutes.js';
+import programRoutes from './routes/programRoutes.js';
+import impactRoutes from './routes/impactRoutes.js';
+import zohoCampaignsRoutes from './routes/zohoCampaignsRoutes.js';
 
 const app = express();
 
@@ -30,4 +30,4 @@ app.use('/api/programs', programRoutes);
 app.use('/api/impacts', impactRoutes);
 app.use('/api', zohoCampaignsRoutes);
 
-module.exports = app;
+export default app;
