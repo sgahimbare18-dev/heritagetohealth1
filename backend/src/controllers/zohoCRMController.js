@@ -1,7 +1,7 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const axios = require('axios');
+import axios from 'axios';
 
 class ZohoCRMController {
   constructor() {
@@ -327,4 +327,4 @@ class ZohoCRMController {
   }
 }
 
-module.exports = new ZohoCRMController();
+export default new ZohoCRMController();

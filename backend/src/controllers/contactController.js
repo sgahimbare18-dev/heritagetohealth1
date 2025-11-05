@@ -1,9 +1,9 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const Contact = require('../models/Contact');
-const nodemailer = require('nodemailer');
-const zohoCRM = require('./zohoCRMController');
+import Contact from '../models/Contact.js';
+import nodemailer from 'nodemailer';
+import zohoCRM from './zohoCRMController.js';
 
 const submitContact = async (req, res) => {
   const { name, email, subject, message } = req.body;
@@ -142,4 +142,4 @@ const submitPartnership = async (req, res) => {
   }
 };
 
-module.exports = { submitContact, submitPartnership };
+export { submitContact, submitPartnership };

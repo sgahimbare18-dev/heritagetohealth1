@@ -1,12 +1,12 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const express = require('express');
-const { submitContact, submitPartnership } = require('../controllers/contactController');
+import express from 'express';
+import { submitContact, submitPartnership } from '../controllers/contactController.js';
 
 const router = express.Router();
 
 router.post('/contact', submitContact);
 router.post('/partnership', submitPartnership);
 
-module.exports = router;
+export default router;
