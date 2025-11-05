@@ -1,8 +1,3 @@
+# Environment files
 .env
-node_modules/
-frontend/.env
-frontend/.env.local
 backend/.env
-*.env
-npm-debug.log*
-yarn-error.log*
