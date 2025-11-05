@@ -21,7 +21,7 @@ const ContactForm = () => {
     setSubmitMessage('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      const response = await axios.post('https://heritagetohealth1.onrender.com/api/contact', formData);
       const result = response.data;
       setSubmitMessage(result.message);
       if (result.success) {
