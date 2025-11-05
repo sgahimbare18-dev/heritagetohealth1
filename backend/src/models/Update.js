@@ -1,7 +1,7 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const updateSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -12,4 +12,6 @@ const updateSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Update', updateSchema);
+const Update = mongoose.model('Update', updateSchema);
+
+export default Update;

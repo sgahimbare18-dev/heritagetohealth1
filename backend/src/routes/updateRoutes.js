@@ -1,20 +1,21 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const express = require('express');
+import express from 'express';
+import * as updateController from '../controllers/updateController.js';
+
 const router = express.Router();
-const { getUpdates, createUpdate, updateUpdate, deleteUpdate } = require('../controllers/updateController');
 
 // GET /api/updates - Get all published updates
-router.get('/', getUpdates);
+router.get('/', updateController.getUpdates);
 
 // POST /api/updates - Create a new update (admin)
-router.post('/', createUpdate);
+router.post('/', updateController.createUpdate);
 
 // PUT /api/updates/:id - Update an existing update (admin)
-router.put('/:id', updateUpdate);
+router.put('/:id', updateController.updateUpdate);
 
 // DELETE /api/updates/:id - Delete an update (admin)
-router.delete('/:id', deleteUpdate);
+router.delete('/:id', updateController.deleteUpdate);
 
-module.exports = router;
+export default router;

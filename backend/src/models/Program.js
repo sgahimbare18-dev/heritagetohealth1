@@ -1,7 +1,7 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const programSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -12,4 +12,6 @@ const programSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Program', programSchema);
+const Program = mongoose.model('Program', programSchema);
+
+export default Program;

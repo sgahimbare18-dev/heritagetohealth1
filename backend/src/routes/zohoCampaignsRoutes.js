@@ -1,18 +1,14 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const express = require('express');
-const { 
-  subscribeToNewsletter, 
-  unsubscribeFromNewsletter, 
-  getSubscriptionStatus 
-} = require('../controllers/zohoCampaignsController');
+import express from 'express';
+import * as zohoCampaignsController from '../controllers/zohoCampaignsController.js';
 
 const router = express.Router();
 
 // Newsletter subscription routes
-router.post('/newsletter/subscribe', subscribeToNewsletter);
-router.post('/newsletter/unsubscribe', unsubscribeFromNewsletter);
-router.get('/newsletter/status', getSubscriptionStatus);
+router.post('/newsletter/subscribe', zohoCampaignsController.subscribeToNewsletter);
+router.post('/newsletter/unsubscribe', zohoCampaignsController.unsubscribeFromNewsletter);
+router.get('/newsletter/status', zohoCampaignsController.getSubscriptionStatus);
 
-module.exports = router;
+export default router;

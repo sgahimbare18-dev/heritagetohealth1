@@ -1,7 +1,7 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const Project = require('../models/Project');
+import Project from '../models/Project.js';
 
 // Get all projects
 const getAllProjects = async (req, res) => {
@@ -114,7 +114,7 @@ const deleteProject = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   getAllProjects,
   getPublishedProjects,
   getProjectById,

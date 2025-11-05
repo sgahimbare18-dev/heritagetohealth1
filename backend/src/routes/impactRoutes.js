@@ -1,9 +1,10 @@
-const dotenv = require("dotenv");
+import dotenv from 'dotenv';
 dotenv.config();
 
-const express = require('express');
+import express from 'express';
+import * as impactController from '../controllers/impactController.js';
+
 const router = express.Router();
-const impactController = require('../controllers/impactController');
 
 // GET /api/impacts - Get all impacts (admin)
 router.get('/', impactController.getAllImpacts);
@@ -23,4 +24,5 @@ router.put('/:id', impactController.updateImpact);
 // DELETE /api/impacts/:id - Delete impact
 router.delete('/:id', impactController.deleteImpact);
 
-module.exports = router;
+// ✅ Must include this line for ES modules:
+export default router;

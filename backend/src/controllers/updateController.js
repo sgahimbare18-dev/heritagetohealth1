@@ -1,7 +1,7 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const Update = require('../models/Update');
+import Update from '../models/Update.js';
 
 // Get all published updates
 const getUpdates = async (req, res) => {
@@ -75,4 +75,4 @@ const deleteUpdate = async (req, res) => {
   }
 };
 
-module.exports = { getUpdates, createUpdate, updateUpdate, deleteUpdate };
+export { getUpdates, createUpdate, updateUpdate, deleteUpdate };

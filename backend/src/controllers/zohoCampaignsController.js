@@ -1,8 +1,8 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const axios = require('axios');
-const zohoCRM = require('./zohoCRMController');
+import axios from 'axios';
+import * as zohoCRM from './zohoCRMController.js';
 
 // Zoho Campaigns API configuration
 const ZOHO_CAMPAIGNS_API_URL = 'https://campaigns.zoho.com/api/v1.1/json';
@@ -14,9 +14,9 @@ const subscribeToNewsletter = async (req, res) => {
   try {
     // Check if we have the required environment variables
     if (!process.env.ZOHO_CAMPAIGNS_LIST_KEY || !process.env.ZOHO_CAMPAIGNS_ACCESS_TOKEN) {
-      return res.status(500).json({ 
-        success: false, 
-        message: 'Newsletter subscription is not properly configured' 
+      return res.status(500).json({
+        success: false,
+        message: 'Newsletter subscription is not properly configured'
       });
     }
 
@@ -53,7 +53,7 @@ const subscribeToNewsletter = async (req, res) => {
           source: 'Newsletter Subscription',
           description: 'Subscribed to Heritage to Health Newsletter'
         });
-        
+
         if (crmResult.success) {
           console.log('Newsletter subscriber synced to Zoho CRM successfully');
         } else {
@@ -63,9 +63,9 @@ const subscribeToNewsletter = async (req, res) => {
         console.warn('CRM sync error (non-blocking):', crmError.message);
       }
 
-      res.status(200).json({ 
-        success: true, 
-        message: 'Successfully subscribed to our newsletter!' 
+      res.status(200).json({
+        success: true,
+        message: 'Successfully subscribed to our newsletter!'
       });
     } else {
       // Handle specific error cases
@@ -73,18 +73,18 @@ const subscribeToNewsletter = async (req, res) => {
       if (response.data && response.data.message) {
         errorMessage = response.data.message;
       }
-      
-      res.status(400).json({ 
-        success: false, 
-        message: errorMessage 
+
+      res.status(400).json({
+        success: false,
+        message: errorMessage
       });
     }
 
   } catch (error) {
     console.error('Zoho Campaigns API Error:', error.response?.data || error.message);
-    
+
     let errorMessage = 'Failed to subscribe to newsletter';
-    
+
     // Handle specific Zoho API error codes
     if (error.response?.data?.code === '2501') {
       errorMessage = 'Invalid mailing list configuration';
@@ -93,10 +93,10 @@ const subscribeToNewsletter = async (req, res) => {
     } else if (error.response?.data?.code === '2005') {
       errorMessage = 'Group email addresses are not allowed';
     }
-    
-    res.status(500).json({ 
-      success: false, 
-      message: errorMessage 
+
+    res.status(500).json({
+      success: false,
+      message: errorMessage
     });
   }
 };
@@ -107,9 +107,9 @@ const unsubscribeFromNewsletter = async (req, res) => {
 
   try {
     if (!process.env.ZOHO_CAMPAIGNS_LIST_KEY || !process.env.ZOHO_CAMPAIGNS_ACCESS_TOKEN) {
-      return res.status(500).json({ 
-        success: false, 
-        message: 'Newsletter unsubscription is not properly configured' 
+      return res.status(500).json({
+        success: false,
+        message: 'Newsletter unsubscription is not properly configured'
       });
     }
 
@@ -129,22 +129,22 @@ const unsubscribeFromNewsletter = async (req, res) => {
     );
 
     if (response.data && response.data.status === 'success') {
-      res.status(200).json({ 
-        success: true, 
-        message: 'Successfully unsubscribed from our newsletter' 
+      res.status(200).json({
+        success: true,
+        message: 'Successfully unsubscribed from our newsletter'
       });
     } else {
-      res.status(400).json({ 
-        success: false, 
-        message: response.data?.message || 'Failed to unsubscribe from newsletter' 
+      res.status(400).json({
+        success: false,
+        message: response.data?.message || 'Failed to unsubscribe from newsletter'
       });
     }
 
   } catch (error) {
     console.error('Zoho Campaigns Unsubscribe Error:', error.response?.data || error.message);
-    res.status(500).json({ 
-      success: false, 
-      message: 'Failed to unsubscribe from newsletter' 
+    res.status(500).json({
+      success: false,
+      message: 'Failed to unsubscribe from newsletter'
     });
   }
 };
@@ -155,9 +155,9 @@ const getSubscriptionStatus = async (req, res) => {
 
   try {
     if (!process.env.ZOHO_CAMPAIGNS_LIST_KEY || !process.env.ZOHO_CAMPAIGNS_ACCESS_TOKEN) {
-      return res.status(500).json({ 
-        success: false, 
-        message: 'Newsletter status check is not properly configured' 
+      return res.status(500).json({
+        success: false,
+        message: 'Newsletter status check is not properly configured'
       });
     }
 
@@ -176,28 +176,28 @@ const getSubscriptionStatus = async (req, res) => {
     );
 
     if (response.data && response.data.status === 'success') {
-      res.status(200).json({ 
-        success: true, 
+      res.status(200).json({
+        success: true,
         subscribed: response.data.subscribed || false,
-        message: response.data.message 
+        message: response.data.message
       });
     } else {
-      res.status(400).json({ 
-        success: false, 
-        message: response.data?.message || 'Failed to check subscription status' 
+      res.status(400).json({
+        success: false,
+        message: response.data?.message || 'Failed to check subscription status'
       });
     }
 
   } catch (error) {
     console.error('Zoho Campaigns Status Check Error:', error.response?.data || error.message);
-    res.status(500).json({ 
-      success: false, 
-      message: 'Failed to check subscription status' 
+    res.status(500).json({
+      success: false,
+      message: 'Failed to check subscription status'
     });
   }
 };
 
-module.exports = {
+export {
   subscribeToNewsletter,
   unsubscribeFromNewsletter,
   getSubscriptionStatus

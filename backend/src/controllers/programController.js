@@ -1,7 +1,7 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const Program = require('../models/Program');
+import Program from '../models/Program.js';
 
 // Get all programs
 const getAllPrograms = async (req, res) => {
@@ -108,7 +108,7 @@ const deleteProgram = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   getAllPrograms,
   getPublishedPrograms,
   getProgramById,

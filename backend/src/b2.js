@@ -1,7 +1,7 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const B2 = require('backblaze-b2');
+import B2 from 'backblaze-b2';
 
 class B2Service {
   constructor() {
@@ -79,4 +79,6 @@ class B2Service {
   }
 }
 
-module.exports = new B2Service();
+const b2Service = new B2Service();
+
+export default b2Service;

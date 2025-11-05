@@ -1,8 +1,8 @@
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
-const multer = require('multer');
-const b2Service = require('../b2');
+import multer from 'multer';
+import * as b2Service from '../b2.js';
 
 // Configure multer for memory storage
 const storage = multer.memoryStorage();
@@ -111,7 +111,7 @@ const deleteFile = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   upload,
   uploadFile,
   getFileUrl,
