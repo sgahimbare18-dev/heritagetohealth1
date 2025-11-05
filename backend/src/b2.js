@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const B2 = require('backblaze-b2');
 
 class B2Service {
@@ -54,6 +57,8 @@ class B2Service {
   }
 
   async getFileUrl(fileName) {
+    // For public access, return the direct URL
+    // Note: Bucket needs to be made public in Backblaze B2 console
     return `https://f005.backblazeb2.com/file/${this.bucketName}/${fileName}`;
   }
 

@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require('express');
 const router = express.Router();
 const { getUpdates, createUpdate, updateUpdate, deleteUpdate } = require('../controllers/updateController');

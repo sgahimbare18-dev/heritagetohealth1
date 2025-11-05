@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const Update = require('../models/Update');
 
 // Get all published updates

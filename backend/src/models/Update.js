@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const mongoose = require('mongoose');
 
 const updateSchema = new mongoose.Schema({

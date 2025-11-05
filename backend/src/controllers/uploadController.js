@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const multer = require('multer');
 const b2Service = require('../b2');
 
@@ -6,7 +9,7 @@ const storage = multer.memoryStorage();
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 10 * 1024 * 1024, // 10MB limit
+    fileSize: 50 * 1024 * 1024, // 50MB limit
   },
   fileFilter: (req, file, cb) => {
     // Allow common file types
@@ -15,6 +18,10 @@ const upload = multer({
       'image/png',
       'image/gif',
       'image/webp',
+      'video/mp4',
+      'video/webm',
+      'video/avi',
+      'video/mov',
       'application/pdf',
       'application/msword',
       'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -24,7 +31,7 @@ const upload = multer({
     if (allowedTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type. Only images, PDFs, and documents are allowed.'), false);
+      cb(new Error('Invalid file type. Only images, videos, PDFs, and documents are allowed.'), false);
     }
   },
 });

@@ -1,7 +1,5 @@
-# Integrate Frontend Forms with Backend Upload API
-
-- [x] Update UpdateForm.jsx to upload image/video files to backend API instead of using FileReader
-- [x] Update TestimonialForm.jsx to upload photo files to backend API instead of using FileReader
-- [x] Test file upload functionality in the admin panel
-- [x] Fix react-speech-kit dependency conflict for React 18+ compatibility
-- [x] Clean up unused variables in components
+- [x] Update backend/src/models/Impact.js to add milestones field (array of strings)
+- [x] Update backend/src/controllers/impactController.js to handle milestones in create and update
+- [x] Update frontend/src/components/ImpactForm.jsx to add milestones input
+- [x] Update frontend/src/App.js to add route for /admin/impacts
+- [x] Update frontend/src/components/Login.jsx to mention impacts in post-login info
