@@ -1,0 +1,4 @@
+/* Add Tailwind CSS via CDN in index.html or install it */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
