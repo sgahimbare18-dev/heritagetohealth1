@@ -1,0 +1,5 @@
+- [x] Update backend/src/models/Impact.js to add milestones field (array of strings)
+- [x] Update backend/src/controllers/impactController.js to handle milestones in create and update
+- [x] Update frontend/src/components/ImpactForm.jsx to add milestones input
+- [x] Update frontend/src/App.js to add route for /admin/impacts
+- [x] Update frontend/src/components/Login.jsx to mention impacts in post-login info
