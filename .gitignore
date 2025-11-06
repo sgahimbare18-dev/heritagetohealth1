@@ -1,0 +1,14 @@
+node_modules/
+coverage/
+dist/
+.env
+.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+*.pem
+*.key
+*.crt
+*.sqlite
+tmp/
